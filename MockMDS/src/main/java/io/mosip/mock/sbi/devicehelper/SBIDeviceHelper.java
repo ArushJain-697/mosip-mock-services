@@ -570,6 +570,11 @@ public abstract class SBIDeviceHelper {
 				}
 				break;
 			case SBIConstant.MOSIP_BIOMETRIC_TYPE_FACE:
+				// SAJEEV #37: replay frames from a folder when -Dsajeev.replay.dir is set (MOCK); else upstream behaviour
+				byte[] replay = io.mosip.mock.sbi.sajeev.SajeevReplay.nextFrame();
+				if (replay != null) {
+					return replay;
+				}
 				if (deviceSubType.equalsIgnoreCase(SBIConstant.MOSIP_BIOMETRIC_SUBTYPE_FACE)
 						&& getDeviceSubId() == SBIConstant.DEVICE_FACE_SUB_TYPE_ID_FULLFACE) {
 					fileName = FileHelper.getCanonicalPath() + ApplicationPropertyHelper
@@ -905,4 +910,4 @@ public abstract class SBIDeviceHelper {
 		privateKeyMap.entrySet().removeIf(e -> e.getKey().startsWith(keystoreFilePath));
 		certificateMap.entrySet().removeIf(e -> e.getKey().startsWith(keystoreFilePath));
 	}
-}
+}

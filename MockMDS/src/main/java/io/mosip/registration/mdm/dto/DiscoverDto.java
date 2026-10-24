@@ -14,6 +14,9 @@ import lombok.Data;
  */
 @Data
 public class DiscoverDto {
+	/** SAJEEV #37: this device service is a mock. Always true. */
+	private boolean mock = true;
+
 	/**
 	 * The unique identifier of the discovered device.
 	 * 
@@ -80,4 +83,4 @@ public class DiscoverDto {
 	 * by the device (e.g., for multiple sensors).
 	 */
 	private String[] deviceSubId;
-}
+}
