@@ -729,7 +729,7 @@ public class SBIServiceResponse {
 					}
 				}
 
-				Thread.sleep(30);
+				io.mosip.mock.sbi.sajeev.SajeevReplay.sleepUntilNextFrame();
 			}
 			if (deviceHelper.getCaptureInfo() != null) {
 				deviceHelper.deInitDevice();
